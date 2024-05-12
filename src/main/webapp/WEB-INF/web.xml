@@ -8,5 +8,4 @@
     <listener>
         <listener-class>com.zhytelnyi.coursework.queueapp.web.QueueServletListener</listener-class>
     </listener>
-
 </web-app>

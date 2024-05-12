@@ -4,9 +4,9 @@ package com.zhytelnyi.coursework.queueapp.model;
 import java.util.ArrayList;
 
 public class QueueModel {
-    Long id;
-    String name;
-    ArrayList<String> users;
+    private Long id;
+    private String name;
+    private ArrayList<String> users;
 
 
     public QueueModel(Long id, String name, ArrayList<String> users) {

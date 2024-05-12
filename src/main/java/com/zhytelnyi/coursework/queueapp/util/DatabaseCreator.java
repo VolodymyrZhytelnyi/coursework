@@ -10,9 +10,13 @@ public class DatabaseCreator {
 
     public static void createDatabaseCreator(QueueDao queueDao) {
         ArrayList<String> test = new ArrayList<>();
-        test.add("Hello");
-        test.add("djsf");
-        queueDao.create(new QueueModel("Hello", test));
+        test.add("Віталій");
+        test.add("Степан");
+        test.add("Анатолій");
+        test.add("Володимир");
+        queueDao.create(new QueueModel("Черга до лікаря", test));
+        queueDao.create(new QueueModel("Черга до музею", test));
+        queueDao.create(new QueueModel("Черга до здачі лаб", test));
     }
 
 }
