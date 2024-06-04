@@ -2,6 +2,7 @@ package com.zhytelnyi.coursework.queueapp.dao;
 
 import com.zhytelnyi.coursework.queueapp.model.QueueModel;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeMap;
 
@@ -39,8 +40,31 @@ public class InMemoryQueueDao implements QueueDao{
     @Override
     public void addUserToQueue(Long id, String userName) {
         QueueModel queueModel = findById(id);
-        if (queueModel != null) {
-            queueModel.getUsers().add(userName);
+        ArrayList<String> users = queueModel.getUsers();
+        users.add(userName);
+        queueModel.setUsers(users);
+    }
+
+    @Override
+    public void nextUser(Long id) {
+        QueueModel queueModel = findById(id);
+        ArrayList<String> users = queueModel.getUsers();
+        if (!users.isEmpty()) {
+            users.remove(0);
+        }
+        queueModel.setUsers(users);
+    }
+
+    @Override
+    public void deleteUserByName(Long id, String userName) {
+        QueueModel queueModel = findById(id);
+        ArrayList<String> users = queueModel.getUsers();
+
+        if (users.contains(userName)) {
+            users.remove(userName);
+            queueModel.setUsers(users);
         }
     }
+
+
 }

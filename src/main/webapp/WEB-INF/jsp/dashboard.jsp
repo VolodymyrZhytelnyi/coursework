@@ -13,6 +13,10 @@
     <title>Queue</title>
 </head>
 <body>
+<h1>Hello, <%=request.getRemoteUser()%></h1>
+<h1><a href="createQueue.jsp">Створити чергу</a>
+</h1>
+
 <table border ="1">
     <thead>
     <tr>
@@ -29,9 +33,45 @@
                     <c:out value="${user}"/><c:if test="${!loop.last}">, </c:if>
                 </c:forEach>
             </td>
-        </tr>
-    </c:forEach>
+            <td>
+                <form action="queueController" method="post">
+                    <input type="hidden" name="command" value="addUser">
+                    <input type="submit" value="addUser">
+                    <input type="hidden" name="id" value="${queueModel.id}">
+                </form>
+            </td>
+            <td>
+                <form action="queueController" method="post">
+                    <input type="hidden" name="command" value="delete">
+                    <input type="submit" value="delete">
+                    <input type="hidden" name="id" value="${queueModel.id}">
+                </form>
+            </td>
+            <td>
+                <form action="queueController" method="post">
+                    <input type="hidden" name="command" value="nextUser">
+                    <input type="submit" value="NEXT">
+                    <input type="hidden" name="id" value="${queueModel.id}">
+                </form>
+            </td>
+            <td>
+                <form action="queueController" method="post">
+                    <input type="hidden" name="command" value="deleteUserByName">
+                    <input type="text" name="name" placeholder="Введіть ім'я користувача">
+                    <input type="submit" value="Видалити користувача за ім'ям">
+                    <input type="hidden" name="id" value="${queueModel.id}">
+                </form>
 
+            </td>
+        </tr>
+
+    </c:forEach>
+    <form action="queueController" method="post">
+        <input type="hidden" name="command" value="create">
+        <input type="submit" value="create">
+    </form>
+
+<%--    <form action=""></form>--%>
 
 
     </tbody>

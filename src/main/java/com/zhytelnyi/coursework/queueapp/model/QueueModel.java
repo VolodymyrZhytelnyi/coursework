@@ -8,6 +8,15 @@ public class QueueModel {
     private String name;
     private ArrayList<String> users;
 
+    private String ownerName;
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
 
     public QueueModel(Long id, String name, ArrayList<String> users) {
         this.id = id;
@@ -18,6 +27,11 @@ public class QueueModel {
     public QueueModel(String name, ArrayList<String> users) {
         this.name = name;
         this.users = users;
+    }
+
+    public QueueModel(String name) {
+        this.name = name;
+        this.users = new ArrayList<>();
     }
 
     public Long getId() {

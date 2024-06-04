@@ -11,5 +11,7 @@ public interface QueueDao {
     void update(QueueModel queueModel);
     void deleteById(Long id);
     void addUserToQueue(Long queueId, String userName);
+    void nextUser(Long id);
+    void deleteUserByName(Long id, String userName);
 
 }

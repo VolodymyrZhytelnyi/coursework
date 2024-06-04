@@ -8,4 +8,56 @@
     <listener>
         <listener-class>com.zhytelnyi.coursework.queueapp.web.QueueServletListener</listener-class>
     </listener>
+
+    <!-- Security Roles -->
+    <security-role>
+        <role-name>user</role-name>
+    </security-role>
+    <security-role>
+        <role-name>queue_owner</role-name>
+    </security-role>
+
+    <!-- Security Constraint for basic -->
+    <security-constraint>
+        <display-name>basic</display-name>
+        <web-resource-collection>
+            <web-resource-name>basic</web-resource-name>
+            <url-pattern>/src/main/webapp/WEB-INF/jsp/dashboard.jsp</url-pattern>
+            <url-pattern>/src/main/webapp/WEB-INF/jsp/addUserToQueue.jsp</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <!-- Add other HTTP methods if needed -->
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+            <role-name>queue_owner</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <!-- Security Constraint for queue_owner -->
+    <security-constraint>
+        <display-name>for_queue_owner</display-name>
+        <web-resource-collection>
+            <web-resource-name>for_queue_owner</web-resource-name>
+            <url-pattern>/createQueue.jsp</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <!-- Add other HTTP methods if needed -->
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>queue_owner</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <!-- Login Configuration -->
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+
 </web-app>
