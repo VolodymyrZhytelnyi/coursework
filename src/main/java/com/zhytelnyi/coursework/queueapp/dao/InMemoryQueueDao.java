@@ -66,5 +66,38 @@ public class InMemoryQueueDao implements QueueDao{
         }
     }
 
+    @Override
+    public boolean checkProperty(Long id, String ownerName) {
+        QueueModel queueModel = findById(id);
+        String realTrueName = queueModel.getOwnerName();
+        if (realTrueName != ownerName) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    @Override
+    public boolean isQueueAvailableForWrite(long id) {
+        QueueModel queueModel = findById(id);
+
+        return queueModel.isQueueWritable();
+    }
+
+    @Override
+    public void setAccessQueue(long id, String command) {
+        QueueModel queueModel = findById(id);
+
+        if (command.equals("close")) {
+            queueModel.setQueueWritable(false);
+        } else if (command.equals("open")) {
+            queueModel.setQueueWritable(true);
+        } else {
+            throw new IllegalArgumentException("Invalid command");
+        }
+    }
+
+
 
 }

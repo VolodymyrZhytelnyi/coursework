@@ -7,8 +7,8 @@ public class QueueModel {
     private Long id;
     private String name;
     private ArrayList<String> users;
-
     private String ownerName;
+    private boolean isQueueWritable = true;
 
     public String getOwnerName() {
         return ownerName;
@@ -27,6 +27,12 @@ public class QueueModel {
     public QueueModel(String name, ArrayList<String> users) {
         this.name = name;
         this.users = users;
+    }
+
+    public QueueModel(String name, String ownerName) {
+        this.name = name;
+        this.users = new ArrayList<>();
+        this.ownerName = ownerName;
     }
 
     public QueueModel(String name) {
@@ -56,5 +62,13 @@ public class QueueModel {
 
     public void setUsers(ArrayList<String> users) {
         this.users = users;
+    }
+
+    public boolean isQueueWritable() {
+        return isQueueWritable;
+    }
+
+    public void setQueueWritable(boolean queueWritable) {
+        isQueueWritable = queueWritable;
     }
 }

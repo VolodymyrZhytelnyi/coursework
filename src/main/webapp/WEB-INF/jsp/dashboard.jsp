@@ -14,8 +14,6 @@
 </head>
 <body>
 <h1>Hello, <%=request.getRemoteUser()%></h1>
-<h1><a href="createQueue.jsp">Створити чергу</a>
-</h1>
 
 <table border ="1">
     <thead>
@@ -53,6 +51,24 @@
                     <input type="submit" value="NEXT">
                     <input type="hidden" name="id" value="${queueModel.id}">
                 </form>
+            </td>
+            <td>
+                <form action="queueController" method="post">
+                    <input type="hidden" name="command" value="writeControl">
+                    <input type="hidden" name="value" value="close">
+                    <input type="submit" value="Закрити чергу для запису">
+                    <input type="hidden" name="id" value="${queueModel.id}">
+                </form>
+
+            </td>
+            <td>
+                <form action="queueController" method="post">
+                    <input type="hidden" name="command" value="writeControl">
+                    <input type="hidden" name="value" value="open">
+                    <input type="submit" value="Відкрити чергу для запису">
+                    <input type="hidden" name="id" value="${queueModel.id}">
+                </form>
+
             </td>
             <td>
                 <form action="queueController" method="post">

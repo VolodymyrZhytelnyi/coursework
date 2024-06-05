@@ -13,5 +13,7 @@ public interface QueueDao {
     void addUserToQueue(Long queueId, String userName);
     void nextUser(Long id);
     void deleteUserByName(Long id, String userName);
-
+    boolean checkProperty(Long id, String ownerName);
+    boolean isQueueAvailableForWrite(long id);
+    void setAccessQueue(long id, String command);
 }
