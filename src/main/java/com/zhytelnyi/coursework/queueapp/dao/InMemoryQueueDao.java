@@ -41,9 +41,14 @@ public class InMemoryQueueDao implements QueueDao{
     public void addUserToQueue(Long id, String userName) {
         QueueModel queueModel = findById(id);
         ArrayList<String> users = queueModel.getUsers();
+        if (users.stream().anyMatch(existingUser -> existingUser.equalsIgnoreCase(userName))) {
+            throw new RuntimeException("Користувач вже існує в черзі");
+        }
         users.add(userName);
         queueModel.setUsers(users);
     }
+
+
 
     @Override
     public void nextUser(Long id) {
@@ -60,11 +65,11 @@ public class InMemoryQueueDao implements QueueDao{
         QueueModel queueModel = findById(id);
         ArrayList<String> users = queueModel.getUsers();
 
-        if (users.contains(userName)) {
-            users.remove(userName);
-            queueModel.setUsers(users);
-        }
+        users.removeIf(user -> user.equalsIgnoreCase(userName));
+
+        queueModel.setUsers(users);
     }
+
 
     @Override
     public boolean checkProperty(Long id, String ownerName) {

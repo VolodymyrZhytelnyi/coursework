@@ -6,8 +6,6 @@ import java.util.Collection;
 
 import com.zhytelnyi.coursework.queueapp.dao.QueueDao;
 import com.zhytelnyi.coursework.queueapp.model.QueueModel;
-import com.zhytelnyi.coursework.queueapp.model.User;
-import com.zhytelnyi.coursework.queueapp.util.Session;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -16,13 +14,11 @@ import jakarta.servlet.annotation.*;
 public class QueueController extends HttpServlet {
 
     private QueueDao queueDao;
-    private Session session;
 
     @Override
     public void init() throws ServletException {
         super.init();
         queueDao = (QueueDao)getServletContext().getAttribute("queueDao");
-        session = (Session)getServletContext().getAttribute("session");
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -182,12 +178,6 @@ public class QueueController extends HttpServlet {
         } catch (Exception e) {
             response.sendError(400);
         }
-    }
-
-
-    public void createQueue() {
-        User user = session.getUser();
-//        user.createQueue();
     }
 
     private boolean authenticateAndAuthorize(HttpServletRequest request, HttpServletResponse response) throws IOException {

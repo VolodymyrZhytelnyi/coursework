@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="194.0" y="400.5">com.zhytelnyi.coursework.queueapp.controllers.QueueController</node>
+    <node x="371.5" y="4.5">com.zhytelnyi.coursework.queueapp.model.QueueModel</node>
+    <node x="-164.5" y="840.5">com.zhytelnyi.coursework.queueapp.web.QueueServletListener</node>
+    <node x="133.00854271356786" y="768.2475376884424">com.zhytelnyi.coursework.queueapp.model.User</node>
+    <node x="731.5" y="532.5">com.zhytelnyi.coursework.queueapp.util.DatabaseCreator</node>
+    <node x="-29.0" y="-7.5">com.zhytelnyi.coursework.queueapp.dao.QueueDao</node>
+    <node x="-149.0" y="412.5">com.zhytelnyi.coursework.queueapp.dao.InMemoryQueueDao</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.zhytelnyi.coursework.queueapp.util.DatabaseCreator" target="com.zhytelnyi.coursework.queueapp.model.QueueModel" relationship="CREATE">
+      <point x="0.0" y="-31.5" />
+      <point x="880.0" y="384.0" />
+      <point x="560.0" y="384.0" />
+      <point x="60.0" y="139.5" />
+    </edge>
+    <edge source="com.zhytelnyi.coursework.queueapp.controllers.QueueController" target="com.zhytelnyi.coursework.queueapp.model.QueueModel" relationship="CREATE">
+      <point x="120.0" y="-163.5" />
+      <point x="60.0" y="139.5" />
+    </edge>
+    <edge source="com.zhytelnyi.coursework.queueapp.controllers.QueueController" target="com.zhytelnyi.coursework.queueapp.dao.QueueDao" relationship="TO_ONE">
+      <point x="-120.0" y="-163.5" />
+      <point x="320.0" y="364.0" />
+      <point x="192.66666666666663" y="364.0" />
+      <point x="72.66666666666663" y="151.5" />
+    </edge>
+    <edge source="com.zhytelnyi.coursework.queueapp.web.QueueServletListener" target="com.zhytelnyi.coursework.queueapp.dao.InMemoryQueueDao" relationship="CREATE">
+      <point x="0.0" y="-43.5" />
+      <point x="0.0" y="151.5" />
+    </edge>
+    <edge source="com.zhytelnyi.coursework.queueapp.dao.InMemoryQueueDao" target="com.zhytelnyi.coursework.queueapp.model.QueueModel" relationship="TO_MANY">
+      <point x="80.0" y="-151.5" />
+      <point x="80.0" y="384.0" />
+      <point x="434.33333333333337" y="384.0" />
+      <point x="-65.66666666666663" y="139.5" />
+    </edge>
+    <edge source="com.zhytelnyi.coursework.queueapp.dao.InMemoryQueueDao" target="com.zhytelnyi.coursework.queueapp.dao.QueueDao" relationship="REALIZATION">
+      <point x="40.0" y="-151.5" />
+      <point x="-80.0" y="151.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6504968619246863" showDependencies="true" x="106.43919597989895" y="463.7037185929653" />
+  <SelectedNodes>
+    <node>com.zhytelnyi.coursework.queueapp.model.User</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

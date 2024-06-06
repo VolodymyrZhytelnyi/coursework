@@ -34,7 +34,7 @@
             <td>
                 <form action="queueController" method="post">
                     <input type="hidden" name="command" value="addUser">
-                    <input type="submit" value="addUser">
+                    <input type="submit" value="Take a place">
                     <input type="hidden" name="id" value="${queueModel.id}">
                 </form>
             </td>
@@ -56,7 +56,7 @@
                 <form action="queueController" method="post">
                     <input type="hidden" name="command" value="writeControl">
                     <input type="hidden" name="value" value="close">
-                    <input type="submit" value="Закрити чергу для запису">
+                    <input type="submit" value="Close queue">
                     <input type="hidden" name="id" value="${queueModel.id}">
                 </form>
 
@@ -65,7 +65,7 @@
                 <form action="queueController" method="post">
                     <input type="hidden" name="command" value="writeControl">
                     <input type="hidden" name="value" value="open">
-                    <input type="submit" value="Відкрити чергу для запису">
+                    <input type="submit" value="Open queue">
                     <input type="hidden" name="id" value="${queueModel.id}">
                 </form>
 
@@ -73,8 +73,8 @@
             <td>
                 <form action="queueController" method="post">
                     <input type="hidden" name="command" value="deleteUserByName">
-                    <input type="text" name="name" placeholder="Введіть ім'я користувача">
-                    <input type="submit" value="Видалити користувача за ім'ям">
+                    <input type="text" name="name" placeholder="Enter the name...">
+                    <input type="submit" value="Delete user by name">
                     <input type="hidden" name="id" value="${queueModel.id}">
                 </form>
 
